@@ -1,0 +1,17 @@
+[
+  {
+    "name": "my-extra-skills",
+    "owner": "your-github-user",
+    "repo": "your-skills-repo",
+    "ref": "main",
+    "root": "SKILLS"
+  },
+  {
+    "name": "team-private-skills",
+    "owner": "your-org",
+    "repo": "private-skills-repo",
+    "ref": "main",
+    "root": "",
+    "github_token_env": "GITHUB_TOKEN"
+  }
+]
