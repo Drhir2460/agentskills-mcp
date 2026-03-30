@@ -103,7 +103,7 @@ claude mcp add github-skills \
 Once published, users can run the server without cloning the repo:
 
 ```bash
-uvx agentskills-mcp
+uvx pinkpixel-agentskills-mcp
 ```
 
 For release steps, see [PUBLISHING.md](/home/sizzlebop/PINKPIXEL/PROJECTS/CURRENT/skills-mcp/PUBLISHING.md).
