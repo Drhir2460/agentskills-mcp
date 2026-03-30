@@ -1,6 +1,6 @@
 [project]
 name = "pinkpixel-agentskills-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server for discovering, reading, and installing agent skills from curated GitHub repositories."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -25,6 +25,12 @@ dependencies = [
 
 [project.scripts]
 agentskills-mcp = "github_skills_mcp.server:main"
+pinkpixel-agentskills-mcp = "github_skills_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/pinkpixel-dev/agentskills-mcp"
+Repository = "https://github.com/pinkpixel-dev/agentskills-mcp"
+Issues = "https://github.com/pinkpixel-dev/agentskills-mcp/issues"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]

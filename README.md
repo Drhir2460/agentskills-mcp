@@ -1,13 +1,23 @@
-# GitHub Skills MCP
+# Agent Skills MCP
 
-This project provides an MCP server for working with skill libraries stored in one or more GitHub repositories.
+`pinkpixel-agentskills-mcp` is a `stdio` MCP server for discovering, reading, and downloading agent skills from curated GitHub repositories.
 
-It is designed for the workflow you described:
+GitHub: https://github.com/pinkpixel-dev/agentskills-mcp
 
-- search across a growing collection of skill repos
+It is built for a practical workflow:
+
+- search a large curated skill collection instead of searching all of GitHub
 - inspect a matching skill directly from GitHub
-- download a skill locally when the agent should install it
-- return a grounded starter scaffold when a close match exists but a direct download is not the right move
+- install a skill locally when the agent should actually use it
+- suggest a grounded starter scaffold when there is not an exact match
+
+## Why This Exists
+
+This server exists because a large skill library is only useful if an agent can actually find the right skill quickly.
+
+With more than 1,600 collected skills spread across curated repositories, manual browsing becomes slow and noisy. This MCP server gives agents a direct way to search those collections, inspect likely matches, and install the right skill when it is needed.
+
+Skills are genuinely useful when they are easy to discover and apply in context. The goal here is to make a large curated skill archive feel usable instead of overwhelming.
 
 ## What the server exposes
 
@@ -16,6 +26,49 @@ It is designed for the workflow you described:
 - `github_skills_get_skill`
 - `github_skills_install_skill`
 - `github_skills_suggest_skill_scaffold`
+
+## Example Use
+
+Example user request:
+
+```text
+Can you use the pinkpixel-agentskills-mcp tools and find skills for Rust development?
+```
+
+Example result:
+
+- The server searches the built-in skill indexes.
+- It can identify strong matches like `skills-collection-2:rust-pro` and `skills-collection-2:rust-async-patterns`.
+- It can inspect those skill folders directly from GitHub before recommending them.
+- It can then install the selected skill locally with the MCP install tool.
+
+This is especially helpful when a broad keyword search would otherwise return noisy matches, such as `rust` appearing inside `trust`.
+
+## Quickstart
+
+Run from PyPI with `uvx`:
+
+```bash
+uvx pinkpixel-agentskills-mcp
+```
+
+If your environment still prefers the explicit package-to-command form, this works too:
+
+```bash
+uvx --from pinkpixel-agentskills-mcp agentskills-mcp
+```
+
+Register it in Claude:
+
+```bash
+claude mcp add github-skills -- uvx pinkpixel-agentskills-mcp
+```
+
+With a GitHub token for better rate limits:
+
+```bash
+claude mcp add github-skills --env GITHUB_TOKEN=$GITHUB_TOKEN -- uvx pinkpixel-agentskills-mcp
+```
 
 ## Configuration
 
@@ -53,6 +106,8 @@ For private repositories, each user should provide their own token with the acce
 
 ## Install
 
+For local development:
+
 ```bash
 uv sync
 ```
@@ -63,9 +118,9 @@ If a user wants to add more sources, they can create `repos.json` from the examp
 cp repos.example.json repos.json
 ```
 
-## Run
+## Local Run
 
-For stdio transport:
+This is a `stdio` server. To run it locally from the repo:
 
 ```bash
 uv run agentskills-mcp
@@ -77,7 +132,7 @@ For a quick smoke test without leaving a hanging process:
 timeout 5s uv run agentskills-mcp
 ```
 
-## Example Claude Code registration
+## Claude Registration
 
 ```bash
 claude mcp add github-skills --env GITHUB_TOKEN=$GITHUB_TOKEN -- uv run agentskills-mcp
@@ -100,16 +155,30 @@ claude mcp add github-skills \
 
 ## PyPI and uvx
 
-Once published, users can run the server without cloning the repo:
+The published package name is `pinkpixel-agentskills-mcp`.
+
+The server command is available as both:
+
+- `pinkpixel-agentskills-mcp`
+- `agentskills-mcp`
+
+That means the most convenient public install path is:
 
 ```bash
 uvx pinkpixel-agentskills-mcp
+```
+
+If you ever hit an environment that does not pick the matching executable automatically, use:
+
+```bash
+uvx --from pinkpixel-agentskills-mcp agentskills-mcp
 ```
 
 For release steps, see [PUBLISHING.md](/home/sizzlebop/PINKPIXEL/PROJECTS/CURRENT/skills-mcp/PUBLISHING.md).
 
 ## Notes
 
+- This server uses `stdio`, not HTTP/SSE transport.
 - Skill discovery is currently based on finding `SKILL.md` files in configured repos.
 - Built-in defaults make the server usable immediately, while optional config lets users extend the source list.
 - Search ranking is intentionally simple for the first version and can be upgraded later with repo-specific metadata or embeddings.
