@@ -78,6 +78,20 @@ You can use it to:
 - maintain a custom skill set
 - link more repositories or collections later
 
+`repos.example.json` includes a concrete TweetClaw source entry:
+
+```json
+{
+  "name": "tweetclaw",
+  "owner": "Xquik-dev",
+  "repo": "tweetclaw",
+  "ref": "master",
+  "root": "skills"
+}
+```
+
+Use it when you want agentskills-mcp to discover the TweetClaw skill for public X/Twitter source evidence, tweet search, reply search, follower exports, user lookup, monitor workflows, webhooks, media workflows, and approval-reviewed social account actions.
+
 ## 🧰 How to use it day to day
 
 1. Start the server.

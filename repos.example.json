@@ -13,5 +13,12 @@
     "ref": "main",
     "root": "",
     "github_token_env": "GITHUB_TOKEN"
+  },
+  {
+    "name": "tweetclaw",
+    "owner": "Xquik-dev",
+    "repo": "tweetclaw",
+    "ref": "master",
+    "root": "skills"
   }
 ]
